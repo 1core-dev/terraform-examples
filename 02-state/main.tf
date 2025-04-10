@@ -47,13 +47,13 @@ resource "aws_dynamodb_table" "terraform_state" {
   }
 }
 
+// Initialize with S3 backend:
+//    terraform init -backend-config=./backend.hcl
+//
+// This stores the state file in S3 at "global/s3/terraform.tfstate".
 terraform {
   backend "s3" {
-    bucket         = "terraform-examples-terraform-state"
-    key            = "global/s3/terraform.tfstate"
-    dynamodb_table = "terraform-state"
-    region         = "us-east-2"
-    encrypt        = true
+    key = "global/s3/terraform.tfstate"
   }
 }
 
