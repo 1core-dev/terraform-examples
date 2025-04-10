@@ -57,6 +57,10 @@ terraform {
   }
 }
 
+// To import existing EC2 instance created via console, define resource
+// then use following console command to manage it via Terraform:
+//
+// terraform import aws_instance.example <Instance ID>
 resource "aws_instance" "example" {
   ami           = "ami-04f167a56786e4b09"
   instance_type = "t2.micro"
