@@ -57,17 +57,22 @@ terraform {
   }
 }
 
-// To import existing EC2 instance created via console, define resource
-// then use following console command to manage it via Terraform:
+// Import existing EC2 instance:
+// Note: Define the resource first, then run:
 //
-// terraform import aws_instance.example <Instance ID>
-resource "aws_instance" "example" {
-  ami           = "ami-04f167a56786e4b09"
-  instance_type = "t2.micro"
+//   terraform import aws_instance.example <instance_id>
 
-  vpc_security_group_ids = ["sg-093af3842333e054f"]
+// Remove resource from state:
+// Note: Comment/delete the resource block, then run:
+//
+//   terraform state rm aws_instance.example
+# resource "aws_instance" "example" {
+#   ami           = "ami-04f167a56786e4b09"
+#   instance_type = "t2.micro"
 
-  tags = {
-    Name = "bastion"
-  }
-}
+#   vpc_security_group_ids = ["sg-093af3842333e054f"]
+
+#   tags = {
+#     Name = "bastion"
+#   }
+# }
