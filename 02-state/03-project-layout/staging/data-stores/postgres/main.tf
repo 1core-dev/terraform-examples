@@ -1,10 +1,10 @@
 terraform {
-  required_version = ">= 1.0.0, < 2.0.0"
+  required_version = ">= 1.7.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = "~> 5.0"
     }
   }
 
@@ -13,11 +13,13 @@ terraform {
     // by Terratest. If you wish to run this example manually, uncomment 
     // and fill in the config below.
 
+    bucket = "super-c00l-unique-bucke7"
     # bucket       = "<YOUR S3 BUCKET>"
+    key = "stage/tf.tfstate"
     # key          = "<SOME PATH>/terraform.tfstate"
-    # region       = "us-east-2"
-    # encrypt      = true
-    # use_lockfile = true
+    region       = "us-east-2"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 
@@ -29,7 +31,7 @@ resource "aws_db_instance" "example" {
   identifier_prefix   = "terraform-up-and-running"
   engine              = "postgres"
   allocated_storage   = 10
-  instance_class      = "db.t2.micro"
+  instance_class      = "db.t3.micro"
   skip_final_snapshot = true
 
   db_name  = var.db_name
