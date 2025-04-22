@@ -13,11 +13,13 @@ terraform {
     // by Terratest. If you wish to run this example manually, uncomment 
     // and fill in the config below.
 
+    bucket = "super-c00l-unique-bucke7"
     # bucket       = "<YOUR S3 BUCKET>"
+    key = "stage/tf.tfstate"
     # key          = "<SOME PATH>/terraform.tfstate"
-    # region       = "us-east-2"
-    # encrypt      = true
-    # use_lockfile = true
+    region       = "us-east-2"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 
